@@ -1,0 +1,11 @@
+one:
+  lat: 1.5
+  lng: 1.5
+  name: MyString
+  icon: MyString
+
+two:
+  lat: 1.5
+  lng: 1.5
+  name: MyString
+  icon: MyString

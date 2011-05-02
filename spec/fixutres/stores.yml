@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+knightfall_games:
+  lat: 45.48692
+  lng: -122.779996
+  name: Knightfall Games
+  url: http://www.knightfallgames.com
+  description: Test
+
+guardian_games:
+  lat: 45.5206514
+  lng: -122.6628754
+  name: Guardian Games
+  url: http://www.ggportland.com/
+	description: Test

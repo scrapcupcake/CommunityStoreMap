@@ -1,0 +1,23 @@
+<% title "Store Locs" %>
+
+<table>
+  <tr>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th>Name</th>
+    <th>Icon</th>
+  </tr>
+  <% for store_loc in @store_locs %>
+    <tr>
+      <td><%= store_loc.lat %></td>
+      <td><%= store_loc.lng %></td>
+      <td><%= store_loc.name %></td>
+      <td><%= store_loc.icon %></td>
+      <td><%= link_to "Show", store_loc %></td>
+      <td><%= link_to "Edit", edit_store_loc_path(store_loc) %></td>
+      <td><%= link_to "Destroy", store_loc, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Store Loc", new_store_loc_path %></p>

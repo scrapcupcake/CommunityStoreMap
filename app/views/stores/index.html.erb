@@ -1,0 +1,12 @@
+<h1>Listing stores</h1>
+
+<%= render :partial => "map2", :locals => { :stores => @stores } %>
+
+<%= form_tag store_search_path, :method => 'get' do %>
+<%= text_field_tag "storesearch" %>
+<%= submit_tag "Search For Stores Near" %>
+<% end %>
+
+<br />
+
+<%= link_to 'Recomend a new store', new_store_path %>

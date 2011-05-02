@@ -1,0 +1,24 @@
+<% title "Store Loc" %>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @store_loc.lat %>
+</p>
+<p>
+  <strong>Lng:</strong>
+  <%= @store_loc.lng %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @store_loc.name %>
+</p>
+<p>
+  <strong>Icon:</strong>
+  <%= @store_loc.icon %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_store_loc_path(@store_loc) %> |
+  <%= link_to "Destroy", @store_loc, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", store_locs_path %>
+</p>
