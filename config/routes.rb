@@ -1,8 +1,11 @@
 HandCannonCommunity::Application.routes.draw do
-  resources :store_locs
-  match '/store_locs/find(.:format)/(:name)' => "store_locs#find", :as => 'storefind', :defaults => {:format => "html", :name => ""}
+  #resources :store_locs
+  #match '/store_locs/find(.:format)/(:name)' => "store_locs#find", :as => 'storefind', :defaults => {:format => "html", :name => ""}
 
-  root  :to =>"store_locs#index"
+  match "/stores/search" => "stores#index", :as => "store_search"
+  resources :stores
+  
+  root  :to =>"stores#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

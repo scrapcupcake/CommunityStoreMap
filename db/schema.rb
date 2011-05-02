@@ -10,15 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227223522) do
+ActiveRecord::Schema.define(:version => 20110502013106) do
 
-  create_table "store_locs", :force => true do |t|
-    t.float    "lat"
-    t.float    "lng"
+  create_table "stores", :force => true do |t|
     t.string   "name"
-    t.string   "icon"
+    t.string   "url"
+    t.text     "description"
+    t.decimal  "lat",         :precision => 12, :scale => 7
+    t.decimal  "lng",         :precision => 12, :scale => 7
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
   end
 
 end

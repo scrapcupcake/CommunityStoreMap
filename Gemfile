@@ -1,21 +1,31 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
+gem 'mysql2', '~> 0.2.0'
+gem 'rails'
 gem 'heroku'
 gem 'geokit'
-gem 'nifty-generators', :group => :development
+gem 'geokit-rails3'
+#gem 'cartographer'
+
 gem 'jquery-rails', '>= 0.2.6'
-gem 'rspec'
-gem 'rspec-rails'
-gem 'webrat'
-gem 'cucumber'
+
+group :development do
+  gem 'nifty-generators'
+end
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
 
 #gem 'shoulda'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
