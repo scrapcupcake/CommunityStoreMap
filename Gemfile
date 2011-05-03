@@ -5,7 +5,7 @@ gem 'rails'
 gem 'heroku'
 gem 'geokit'
 gem 'geokit-rails3'
-#gem 'cartographer'
+gem 'devise'
 
 gem 'jquery-rails', '>= 0.2.6'
 

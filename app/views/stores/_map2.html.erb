@@ -15,15 +15,4 @@ $(document).ready(function(){
 </style>
 <%end%>
 
-<div id="map"></div>
-
-<div id="map-side-bar">
-<% @stores.each do |store| %>
-  <div class="map-location" data-jmapping="{id: <%= store.id %>, point: {lat: <%= store.lat %>, lng: <%= store.lng %>}}">
-    <a href="#" class="map-link"><%= store.name %></a>
-    <div class="info-box">
-      <p><%= store.description %></p>
-    </div>
-  </div>
-<% end %>
-</div>
+<%= render :partial => "map_guts", :locals => { :stores => @stores } %>

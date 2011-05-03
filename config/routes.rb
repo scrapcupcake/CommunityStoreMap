@@ -1,4 +1,6 @@
 HandCannonCommunity::Application.routes.draw do
+  devise_for :users
+
   #resources :store_locs
   #match '/store_locs/find(.:format)/(:name)' => "store_locs#find", :as => 'storefind', :defaults => {:format => "html", :name => ""}
 

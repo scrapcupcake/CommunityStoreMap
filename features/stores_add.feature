@@ -3,30 +3,36 @@ Feature: Add Stores
   As a visitor
   I want to be able to add a store to be considered to be added to the map
   
-
   Scenario: Add New Store
   When I go to the new store page
   And I add store Knightfall Games
-  Then I should see "Store was successfully created"
+  Then I should see "Store was successfully created, an administrator will need to approve it"
+  And I should have the store Knightfall Games waiting to be approved
   When I follow "Back"
   Then I should see "Knightfall Games"
-
 
   Scenario: Add Existing Store
   Given I have store Knightfall Games
   When I go to the new store page
   And I add store Knightfall Games
   Then I should see "Address must be a unique location"
+  And I should not have the store Knightfall Games waiting to be approved
   When I follow "Back"
-  Then I should see "Knightfall Games"
+  Then I should not see "Knightfall Games"
   
-
   Scenario: Add Invalid Address Store
   When I go to the new store page
   And I add store Invalid Games
   Then I should see "Unable to find address, please verify that it is correct and can be found on google maps"
-  When I add store Knightfall Games
+  And I should not have the store Knightfall Games waiting to be approved
+  When I follow "Back"
+  Then I should not see "Invalid Games"
+  
+  Scenario: Add New Store As Administrator
+  Given I am an administrator
+  When I go to the new store page
+  And I add store Knightfall Games
   Then I should see "Store was successfully created"
+  And I should not have the store Knightfall Games waiting to be approved
   When I follow "Back"
   Then I should see "Knightfall Games"
-  

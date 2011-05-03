@@ -1,7 +1,0 @@
-<% if @loc.success %>
-$("#lat").text(<%= @loc.lat %>)
-$("#lng").text(<%= @loc.lng %>)
-<% else %>
-$("#flash").children().remove();
-$("#flash").append("<div id=\"flash_error\">Unable to find location <%= @location_name %></div>");
-<% end %>
