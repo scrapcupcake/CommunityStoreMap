@@ -209,3 +209,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+def current_path
+  URI.parse(current_url).path
+end

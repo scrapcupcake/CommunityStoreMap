@@ -9,9 +9,12 @@ class Store < ActiveRecord::Base
   validates_uniqueness_of :lat, :scope => :lng, :message => "must be a unique location"
   validates_uniqueness_of :address
   
+  scope :approved, where(:approved => true)  
+  scope :unapproved, where(:approved => false)  
+  
   def no_latlng
     not ((lat) and (lng))
-  end
+  end  
   
   def address_to_latlng
       loc = Geokit::Geocoders::GoogleGeocoder.geocode(address)
@@ -54,7 +57,7 @@ class Store < ActiveRecord::Base
   def self.stores_near(location, distance)
     loc = Geokit::Geocoders::GoogleGeocoder.geocode(location)
     if loc.success
-      return Store.within(distance, :origin => [loc.lat, loc.lng])
+      return Store.approved.within(distance, :origin => [loc.lat, loc.lng])
     else
       return nil
     end

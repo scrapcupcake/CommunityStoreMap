@@ -7,6 +7,9 @@ HandCannonCommunity::Application.routes.draw do
   match "/stores/search" => "stores#index", :as => "store_search"
   resources :stores
   
+  devise_for :users, :controllers => { :registrations => 'user_registrations'}
+  #resources :users #TODO
+  
   root  :to =>"stores#index"
 
   # The priority is based upon order of creation:

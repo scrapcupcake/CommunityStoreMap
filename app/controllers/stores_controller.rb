@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  respond_to :html, :xml, :json
   
   # GET /stores
   # GET /stores.xml
@@ -18,14 +19,9 @@ class StoresController < ApplicationController
         stores = nil
       end
     end
-    @stores = stores || Store.all
-    #@center = Store.optimal_origin
-    #@bounds = Store.optimal_bounds
+    @stores = stores || Store.approved
     
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @stores }
-    end
+    respond_with(@stores)
   end
 
   # GET /stores/1
@@ -33,10 +29,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @store }
-    end
+    respond_with(@store)
   end
 
   # GET /stores/new
@@ -44,10 +37,7 @@ class StoresController < ApplicationController
   def new
     @store = Store.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @store }
-    end
+    respond_with(@store)    
   end
 
   # GET /stores/1/edit
@@ -59,10 +49,17 @@ class StoresController < ApplicationController
   # POST /stores.xml
   def create
     @store = Store.new(params[:store])
+    if can? :manage, @store
+      @store.approved = true      
+    end
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to(@store, :notice => 'Store was successfully created.') }
+        msg = ''
+        unless @store.approved
+          msg = ', an administrator will need to approve it'
+        end
+        format.html { redirect_to(@store, :notice => "Store was successfully created#{msg}.") }
         format.xml  { render :xml => @store, :status => :created, :location => @store }
       else
         format.html { render :action => "new" }

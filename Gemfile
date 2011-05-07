@@ -6,6 +6,7 @@ gem 'heroku'
 gem 'geokit'
 gem 'geokit-rails3'
 gem 'devise'
+gem 'cancan'
 
 gem 'jquery-rails', '>= 0.2.6'
 
@@ -18,8 +19,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'parallel_tests'
 end
 
 #gem 'shoulda'

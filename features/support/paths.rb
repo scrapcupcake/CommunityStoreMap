@@ -14,6 +14,8 @@ module NavigationHelpers
       stores_path
     when /login/
       new_user_session_path
+    when /the new user\s?page/
+      new_user_registration_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

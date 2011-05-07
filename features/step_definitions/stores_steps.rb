@@ -32,7 +32,7 @@ Given /^I have stores? (.+)$/ do |stores|
     storesym = store.sub(" ", "").tableize.to_sym
     store_details = known_stores[storesym]
     store_details["description"] = "Test"
-    Store.create!(store_details)
+    Factory(:store, store_details)
   end
 end
 
@@ -45,4 +45,16 @@ When /^I add store (.+)$/ do |store|
     When %{I fill in "store_url" with "#{store_details[:url]}"}
     When %{I fill in "store_description" with "#{store_details[:description]}"}
     When %{I press "Create Store"}
+end
+
+Then /^I should have the store "([^"]*)" approved$/ do |store|
+  Store.approved.where(:name => store).count.should equal 1
+end
+
+Then /^I should have the store "([^"]*)" waiting to be approved$/ do |store|
+  Store.unapproved.where(:name => store ).count.should equal 1
+end
+
+Then /^I should not have the store "([^"]*)"$/ do |store|
+  Store.unapproved.where(:name => store ).count.should equal 0
 end

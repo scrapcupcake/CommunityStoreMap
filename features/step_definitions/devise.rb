@@ -33,5 +33,18 @@ When /^I log in with user "([^\"]*)" with password "([^\"]*)"$/ do
 end
 
 Given /^I am an administrator$/ do
-  Given %{I am a new, authenticated user} #TODO needs to be updated when I implement CanCan for authorization
+  email = 'testing@man.net'
+  password = 'secretpass'
+  
+  Given %{I have one user "#{email}" with password "#{password}"}
+  And %{I go to login}
+  And %{I fill in "user_email" with "#{email}"}
+  And %{I fill in "user_password" with "#{password}"}
+  And %{I press "Sign in"}
+  Then %{I should see "Signed in as #{email}"}
+  And %{I should see "Sign out"}
+  
+  admin = User.find_by_email(email)
+  Role.create_role(:admin)
+  admin.grant_role(:admin)
 end
