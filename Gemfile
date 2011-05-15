@@ -7,6 +7,7 @@ gem 'geokit'
 gem 'geokit-rails3'
 gem 'devise'
 gem 'cancan'
+gem 'simple_form'
 
 gem 'jquery-rails', '>= 0.2.6'
 

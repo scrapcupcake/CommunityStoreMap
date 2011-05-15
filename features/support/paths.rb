@@ -16,6 +16,16 @@ module NavigationHelpers
       new_user_session_path
     when /the new user\s?page/
       new_user_registration_path
+    when /manage users/i
+      users_path
+    when /stores pending approval/i
+      pending_stores_path
+    when /manage stores/i
+      manage_stores_path
+    when /approve store page for "([^"]*)"/i
+      approve_store_path(Store.find_by_name($1))
+    when /the edit profile page for "([^"]*)"/i
+      edit_user_path(User.find_by_email($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

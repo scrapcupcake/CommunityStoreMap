@@ -1,8 +1,11 @@
 class StoresController < ApplicationController
   respond_to :html, :xml, :json
+  load_resource :only => [:show, :new, :create]
+  load_and_authorize_resource :only => [:edit, :update, :delete, :approve]
   
   # GET /stores
   # GET /stores.xml
+  # These top three methods require custom resource loading or authorization
   def index
     distance = 50
     if params.has_key? :distance
@@ -23,32 +26,38 @@ class StoresController < ApplicationController
     
     respond_with(@stores)
   end
+  
+  def pending    
+    authorize! :manage, Store
+    @pending = Store.unapproved    
+    
+    respond_with(@pending)
+  end
+  
+  def manage #may need to paginate later
+    authorize! :manage, Store
+    @stores = Store.all
+  end
 
   # GET /stores/1
   # GET /stores/1.xml
   def show
-    @store = Store.find(params[:id])
-
     respond_with(@store)
   end
 
   # GET /stores/new
   # GET /stores/new.xml
   def new
-    @store = Store.new
-
     respond_with(@store)    
   end
 
   # GET /stores/1/edit
   def edit
-    @store = Store.find(params[:id])
   end
 
   # POST /stores
   # POST /stores.xml
   def create
-    @store = Store.new(params[:store])
     if can? :manage, @store
       @store.approved = true      
     end
@@ -71,8 +80,6 @@ class StoresController < ApplicationController
   # PUT /stores/1
   # PUT /stores/1.xml
   def update
-    @store = Store.find(params[:id])
-
     respond_to do |format|
       if @store.update_attributes(params[:store])
         format.html { redirect_to(@store, :notice => 'Store was successfully updated.') }
@@ -87,12 +94,22 @@ class StoresController < ApplicationController
   # DELETE /stores/1
   # DELETE /stores/1.xml
   def destroy
-    @store = Store.find(params[:id])
     @store.destroy
 
     respond_to do |format|
       format.html { redirect_to(stores_url) }
       format.xml  { head :ok }
     end
+  end  
+  
+  def approve
+    @store.approved = true
+    @store.save
+    
+    respond_to do |format|
+      format.html { redirect_to(pending_stores_url) }
+    end
   end
+  
+  
 end

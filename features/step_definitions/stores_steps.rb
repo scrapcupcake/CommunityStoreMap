@@ -31,7 +31,16 @@ Given /^I have stores? (.+)$/ do |stores|
   stores.split(", ").each do |store|
     storesym = store.sub(" ", "").tableize.to_sym
     store_details = known_stores[storesym]
-    store_details["description"] = "Test"
+    store_details[:approved] = true
+    Factory(:store, store_details)
+  end
+end
+
+Given /^I have unapproved stores? (.+)$/ do |stores|
+  stores.split(", ").each do |store|
+    storesym = store.sub(" ", "").tableize.to_sym
+    store_details = known_stores[storesym]
+    store_details[:approved] = false
     Factory(:store, store_details)
   end
 end
@@ -57,4 +66,8 @@ end
 
 Then /^I should not have the store "([^"]*)"$/ do |store|
   Store.unapproved.where(:name => store ).count.should equal 0
+end
+
+When /^I go try to approve store "([^"]*)"$/ do |store_name|
+  When %{I go to the approve store page for "#{store_name}"}
 end

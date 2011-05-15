@@ -9,7 +9,10 @@ Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)"$/ do |email, passw
 end
 
 Given /^I am a new, authenticated user$/ do
-  email = 'testing@man.net'
+  Given %{I am a new, authenticated user with the email "fred@example.com"}
+end
+
+Given /^I am a new, authenticated user with the email "([^"]*)"$/ do |email|
   password = 'secretpass'
 
   Given %{I have one user "#{email}" with password "#{password}"}

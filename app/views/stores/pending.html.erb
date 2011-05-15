@@ -1,0 +1,8 @@
+<ul>
+<% @pending.each do |store| %>
+  <li><%= render store %>
+      <%= link_to "Approve", approve_store_path(store) %> |
+      <%= link_to "Delete", store_path(store), :method => :delete %> 
+  </li>
+<% end%>
+</ul>

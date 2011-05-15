@@ -9,7 +9,7 @@ Feature: View Stores
     Then I should see "Knightfall Games"
     And I should see "Guardian Games"
     
-    Scenario: Area Map
+  Scenario: Area Map
     Given I have stores Knightfall Games, Guardian Games, Gamealot Games
     When I go to the store map
     Then I should see "Knightfall Games" 
@@ -21,15 +21,14 @@ Feature: View Stores
     And I should see "Guardian Games"
     And I should not see "Game-Alot Toys and Games"
     
-    
-    Scenario: View Map As Admin
+  Scenario: View Map As Admin
     Given I have stores Knightfall Games, Guardian Games
     And I am an administrator
     When I go to the store map
     Then I should see "Knightfall Games"
     And I should see "Guardian Games"
     
-    Scenario: Area Map As Admin
+  Scenario: Area Map As Admin
     Given I have stores Knightfall Games, Guardian Games, Gamealot Games
     And I am an administrator
     When I go to the store map

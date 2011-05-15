@@ -15,4 +15,6 @@ $(document).ready(function(){
 </style>
 <%end%>
 
-<%= render :partial => "map_guts", :locals => { :stores => @stores } %>
+<div id="map"></div>
+
+<%= render :partial => "map_sidebar", :locals => { :stores => @stores } %>

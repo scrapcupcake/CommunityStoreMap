@@ -1,0 +1,24 @@
+<div id="user_nav">
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>.
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+        <% end %>
+
+      <ul>
+          <% if can? :manage, User %>
+            <li><%= link_to "Manage Users", users_path%></li>  
+          <% end %>
+          
+          <% if can? :manage, Store %>
+            <li><%= link_to "Stores Pending Approval(#{pending_store_count})", pending_stores_path%></li>
+            <li><%= link_to "Manage Stores", manage_stores_path %>
+          <% end %>
+          
+          <% if can? :update, current_user %>
+          <li><%= link_to "Edit Profile", edit_user_path(current_user)%></li>
+          <% end %>
+      </ul>
+</div>
+

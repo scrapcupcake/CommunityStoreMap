@@ -5,10 +5,13 @@ HandCannonCommunity::Application.routes.draw do
   #match '/store_locs/find(.:format)/(:name)' => "store_locs#find", :as => 'storefind', :defaults => {:format => "html", :name => ""}
 
   match "/stores/search" => "stores#index", :as => "store_search"
+  match "/stores/pending" => "stores#pending", :as => "pending_stores"
+  match "/stores/approve/:id" => "stores#approve", :as => "approve_store"
+  match "/stores/manage" => "stores#manage", :as => "manage_stores"
   resources :stores
   
   devise_for :users, :controllers => { :registrations => 'user_registrations'}
-  #resources :users #TODO
+  resources :users
   
   root  :to =>"stores#index"
 
