@@ -51,3 +51,8 @@ Given /^I am an administrator$/ do
   Role.create_role(:admin)
   admin.grant_role(:admin)
 end
+
+Then /^I should have access denied$/ do
+  Then %{I should be on the home page}
+  Then %{I should see "You are not authorized to access this page."}
+end

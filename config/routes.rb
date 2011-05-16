@@ -11,7 +11,9 @@ HandCannonCommunity::Application.routes.draw do
   resources :stores
   
   devise_for :users, :controllers => { :registrations => 'user_registrations'}
-  resources :users
+  scope "/admin" do 
+    resources :users
+  end
   
   root  :to =>"stores#index"
 

@@ -25,23 +25,19 @@ Feature: Approve Stores
   Scenario: Normal user cannot view pending stores
   Given I am a new, authenticated user
   When I go to the stores pending approval
-  Then I should be on the home page
-  And I should see "You are not authorized to access this page."
+  Then I should have access denied
   
   Scenario: Normal user cannot approve pending store
   Given I am a new, authenticated user
   And I have unapproved store Knightfall Games
   When I go try to approve store "Knightfall Games"
-  Then I should be on the home page
-  And I should see "You are not authorized to access this page."
+  Then I should have access denied
   
   Scenario: Guest cannot view pending stores
   When I go to the stores pending approval
-  Then I should be on the home page
-  And I should see "You are not authorized to access this page."
+  Then I should have access denied
   
   Scenario: Guest cannot approve pending store
   Given I have unapproved store Knightfall Games
   When I go try to approve store "Knightfall Games"
-  Then I should be on the home page
-  And I should see "You are not authorized to access this page."
+  Then I should have access denied

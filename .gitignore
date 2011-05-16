@@ -6,3 +6,4 @@ log/*.log
 tmp/
 public/images/icons
 rerun.txt
+config/database.yml

@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
   respond_to :html, :xml, :json
   load_resource :only => [:show, :new, :create]
-  load_and_authorize_resource :only => [:edit, :update, :delete, :approve]
+  load_and_authorize_resource :only => [:edit, :update, :destroy, :approve]
   
   # GET /stores
   # GET /stores.xml

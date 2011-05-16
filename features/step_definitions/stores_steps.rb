@@ -71,3 +71,18 @@ end
 When /^I go try to approve store "([^"]*)"$/ do |store_name|
   When %{I go to the approve store page for "#{store_name}"}
 end
+
+When /^I try to edit the store "([^"]*)" to "([^"]*)"$/ do |store, new_name|
+  When %{I go to the edit store page for "#{store}"}
+  When %{I fill in "store_name" with "#{new_name}"}
+  When %{I press "Update Store"}
+  Then %{I should be on the store page for "#{new_name}"}
+  Then %{I should see "#{new_name}"}
+  Then %{I should not see "#{store}"}
+end
+
+When /^I delete the store "([^"]*)"/ do |store_name|
+  store = Store.find_by_name(store_name)
+  rack_test_session_wrapper = Capybara.current_session.driver
+  rack_test_session_wrapper.process :delete, store_path(store)
+end

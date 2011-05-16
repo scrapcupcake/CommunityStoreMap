@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :get_user, :only => [:index,:new,:edit]
   before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
-  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
+  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update, :create]
   respond_to :html, :xml, :json
   
   # GET /users
@@ -49,7 +49,13 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-
+    if params[:user][:password].blank?
+      [:password,:password_confirmation,:current_password].collect{|p| params[:user].delete(p) }
+    else
+      #code smell: shouldn't this be a before_save on the model?
+      @user.errors[:base] << "The password you entered is incorrect" unless @user.valid_password?(params[:user][:current_password])
+    end
+    
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
