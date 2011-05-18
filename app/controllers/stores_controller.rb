@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
   respond_to :html, :xml, :json
   load_resource :only => [:show, :new, :create]
-  load_and_authorize_resource :only => [:edit, :update, :destroy, :approve]
+  load_and_authorize_resource :only => [:edit, :update, :destroy, :approve, :pending, :manage]
   
   # GET /stores
   # GET /stores.xml
@@ -27,16 +27,13 @@ class StoresController < ApplicationController
     respond_with(@stores)
   end
   
-  def pending    
-    authorize! :manage, Store
-    @pending = Store.unapproved    
+  def pending
+    @pending = @stores.unapproved    
     
     respond_with(@pending)
   end
   
   def manage #may need to paginate later
-    authorize! :manage, Store
-    @stores = Store.all
   end
 
   # GET /stores/1

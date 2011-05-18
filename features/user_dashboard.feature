@@ -31,6 +31,6 @@ be able to see a link to manage the current stores and another to approve stores
   Then I should not see "Manage Users"
   
   Scenario: Normal User Can Use Edit Profile Link
-  Given I am a new, authenticated user with the email "eddie@example.org"
+  Given I am a new, authenticated user with email "eddie@example.org"
   When I go to the home page
   Then I should be able to see and visit the "Edit Profile" link for user "eddie@example.org"

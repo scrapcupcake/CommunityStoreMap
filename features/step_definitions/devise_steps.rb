@@ -9,12 +9,14 @@ Given /^I have one\s+user "([^\"]*)" with password "([^\"]*)"$/ do |email, passw
 end
 
 Given /^I am a new, authenticated user$/ do
-  Given %{I am a new, authenticated user with the email "fred@example.com"}
+  Given %{I am a new, authenticated user with email "testnoname@example.com"}
 end
 
-Given /^I am a new, authenticated user with the email "([^"]*)"$/ do |email|
-  password = 'secretpass'
+Given /^I am a new, authenticated user with email "([^"]*)"$/ do |email|
+  Given %{I am a new, authenticated user with email "#{email}" and password "secretpass"}
+end
 
+Given /^I am a new, authenticated user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
   Given %{I have one user "#{email}" with password "#{password}"}
   And %{I go to login}
   And %{I fill in "user_email" with "#{email}"}
@@ -24,7 +26,7 @@ Given /^I am a new, authenticated user with the email "([^"]*)"$/ do |email|
   And %{I should see "Sign out"}
 end
 
-When /^I log in with user "([^\"]*)" with password "([^\"]*)"$/ do
+When /^I log in with user "([^\"]*)" with password "([^\"]*)"$/ do |user, password|
 
   Given %{I have one user "#{email}" with password "#{password}"}
   And %{I go to login}
@@ -36,7 +38,10 @@ When /^I log in with user "([^\"]*)" with password "([^\"]*)"$/ do
 end
 
 Given /^I am an administrator$/ do
-  email = 'testing@man.net'
+  Given %{I am an administrator with email "testing@man.net"}
+end
+
+Given /^I am an administrator with email "([^"]*)"$/ do |email|
   password = 'secretpass'
   
   Given %{I have one user "#{email}" with password "#{password}"}

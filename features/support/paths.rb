@@ -24,14 +24,17 @@ module NavigationHelpers
       manage_stores_path
     when /approve store page for "([^"]*)"/i
       approve_store_path(Store.find_by_name($1))
-    when /the edit profile page for "([^"]*)"/i
-      edit_user_path(User.find_by_email($1))
     when /the edit store page for "([^"]*)"/i
       edit_store_path(Store.find_by_name($1))
     when /the delete store page for "([^"]*)"/i
       store_path(Store.find_by_name($1), :method => :delete)
     when /the store page for "([^"]*)"/i
       store_path(Store.find_by_name($1))
+    when /the edit profile page for "([^"]*)"/i
+      edit_user_path(User.find_by_email($1))    
+    when /^the user page for "([^"]*)"$/i
+      user_path(User.find_by_email($1))
+      
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

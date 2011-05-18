@@ -1,9 +1,17 @@
-<div id="user-<%=@user.id%>" class="user">
-<h2><%= @user.email%></h2>
-<%if @user.roles.empty?%>
+<div id="user-<%=user.id%>" class="user">
+<h2><%= user.email%></h2>
+<%if user.roles.empty?%>
 <p>Is a Normal User</p>
 <%end%>
-<%@user.roles.each do |role|%>
+<%user.roles.each do |role|%>
 <p>Is <%= role.name.titleize %></p>
+<%end%>
+
+<% if can? :manage, user %>
+<%= link_to 'Edit', edit_user_path(user) %>
+<%end%>
+<% if can? :destroy, user %>
+<br/>
+<%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %>
 <%end%>
 </div>

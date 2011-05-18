@@ -10,6 +10,8 @@ module HtmlSelectorsHelpers
 
     when /the page/
       "html > body"
+    when /the user "([^"]*)"/
+      "#user-#{User.find_by_email($1).id}"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
