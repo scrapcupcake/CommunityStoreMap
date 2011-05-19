@@ -10,7 +10,7 @@ gem 'cancan'
 gem 'simple_form'
 gem 'json'
 gem 'barista'
-gem 'therubyracer', :require => nil
+gem 'therubyracer-heroku', '0.8.1.pre3', :require => nil, :group => :production
 
 gem 'jquery-rails', '>= 0.2.6'
 
@@ -19,6 +19,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'therubyracer', :require => nil
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber-rails'
