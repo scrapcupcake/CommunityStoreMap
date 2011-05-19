@@ -3,6 +3,7 @@
 db/*.sqlite3
 log/*.log
 tmp/
+public/javascript/map.js
 public/images/icons
 rerun.txt
 config/database.yml
