@@ -10,7 +10,7 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the store\s?map/
+    when /the store\s?map( page)?/i
       stores_path
     when /login/
       new_user_session_path

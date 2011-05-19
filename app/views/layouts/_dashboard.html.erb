@@ -7,6 +7,7 @@
         <% end %>
 
       <ul>
+        <li><%= link_to "Store Map", stores_path %></li>
           <% if can? :manage, User %>
             <li><%= link_to "Manage Users", users_path%></li>  
           <% end %>

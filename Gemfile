@@ -8,6 +8,9 @@ gem 'geokit-rails3'
 gem 'devise'
 gem 'cancan'
 gem 'simple_form'
+gem 'json'
+gem 'barista'
+gem 'therubyracer', :require => nil
 
 gem 'jquery-rails', '>= 0.2.6'
 

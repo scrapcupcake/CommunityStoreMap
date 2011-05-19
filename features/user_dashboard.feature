@@ -3,6 +3,10 @@ Users should see links at the top of the page when they are signed in, based on 
 manage and modify various things on the site. For example, a user should be able to edit their own 
 profile. A user administrator should be able to create, edit and delete other users. A store administrator should 
 be able to see a link to manage the current stores and another to approve stores pending approval.
+  
+  Scenario: Even guests can see the Store Map link
+  When I go to the home page
+  Then I should be able to see and visit the "Store Map" page
 
   Scenario: Store administrator Can Use Manage Stores Link
   Given I am an administrator
