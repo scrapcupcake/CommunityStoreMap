@@ -2,8 +2,8 @@
 
 <%= render :partial => "map", :locals => { :stores => @stores } %>
 
-<%= form_tag store_search_path, :method => 'get' do %>
-<%= text_field_tag "storesearch" %>
+<%= form_tag store_search_path, :id => "search", :remote => true, :method => 'get' do %>
+<%= text_field_tag :storesearch %>
 <%= submit_tag "Search For Stores Near" %>
 <% end %>
 

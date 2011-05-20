@@ -24,7 +24,11 @@ class StoresController < ApplicationController
     end
     @stores = stores || Store.approved
     
-    respond_with(@stores)
+    if request.xhr?
+      render(:content_type=>'text/html', :layout => false, :partial => 'map_sidebar')
+    else
+      respond_with(@stores)
+    end
   end
   
   def pending
