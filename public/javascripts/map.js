@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 20 May 2011 04:29:02 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 24 May 2011 05:02:33 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/map.coffee
  */
 
@@ -6,8 +6,12 @@
   $(document).ready(function() {
     $('#map').jMapping();
     return $("#search").bind("ajax:success", function(event, data, status, xhr) {
-      $("#map-side-bar").html(data);
-      return $('#map').jMapping("update");
+      var d;
+      d = $.parseJSON(data);
+      $("#flash").html(d.errors);
+      $("#map-side-bar").html(d.html);
+      $('#map').jMapping("update");
+      return $.notifications("#flash");
     });
   });
 }).call(this);

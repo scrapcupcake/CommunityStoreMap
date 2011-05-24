@@ -25,9 +25,12 @@ class StoresController < ApplicationController
     @stores = stores || Store.approved
     
     if request.xhr?
-      render(:content_type=>'text/html', :layout => false, :partial => 'map_sidebar')
+          html = render_to_string(:content_type=>'text/html', :layout => false, :partial => 'map_sidebar')
+          errors = render_to_string(:content_type=>'text/html', :layout => false, :partial => 'layouts/errors')
+          json = { :html => html, :errors => errors}.to_json
+          render :text =>  json
     else
-      respond_with(@stores)
+      respond_with(@stores)      
     end
   end
   

@@ -1,5 +1,8 @@
 $(document).ready ->
   $('#map').jMapping()
   $("#search").bind "ajax:success", (event, data, status, xhr) -> 
-      $("#map-side-bar").html data
+      d = $.parseJSON data
+      $("#flash").html d.errors
+      $("#map-side-bar").html d.html
       $('#map').jMapping "update"
+      $.notifications("#flash")

@@ -16,6 +16,7 @@ gem 'jquery-rails', '>= 0.2.6'
 
 group :development do
   gem 'nifty-generators'
+  gem 'geocoder' #for now, probably everywhere soon enough
 end
 
 group :development, :test do

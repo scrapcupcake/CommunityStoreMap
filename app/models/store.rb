@@ -1,7 +1,7 @@
 class Store < ActiveRecord::Base
   acts_as_mappable
-  before_validation :address_to_latlng, :if => :no_latlng
-  after_validation :give_latlng_errors_to_address
+  before_validation :address_to_latlng
+  after_validation :give_latlng_errors_to_address, :if => lambda{ |obj| obj.address_changed? }
   
   validates_presence_of :name, :description, :address
   validates_numericality_of :lat, :greater_than_or_equal_to => -90, :less_than_or_equal_to => 90
