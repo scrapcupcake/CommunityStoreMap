@@ -1,14 +1,17 @@
 alert_type = (id) ->
   idtype = id.split('_')[1]
   switch idtype
-    when "error" then return "error"
-    when "warning", "alert" then return "warning"
+    when "error", "alert" then return "error"
+    when "warning" then return "warning"
     else return ""
+    
+notify = (message) ->
+  $(message).hide()
+  $.jnotify($(message).text(), alert_type($(message).attr("id"))) if message
 
 $.notifications = (obj) ->
-  $(obj).hide()
   messages = $(obj).find('[id*=flash_]')
-  ($.jnotify($(message).text(), alert_type($(message).attr("id"))) if message) for message in messages
+  notify message for message in messages
 
 $(document).ready ->
   $.jnotify.setup delay: 3000
