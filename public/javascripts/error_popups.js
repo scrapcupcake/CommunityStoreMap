@@ -1,26 +1,22 @@
-/* DO NOT MODIFY. This file was compiled Wed, 25 May 2011 04:29:13 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 25 May 2011 04:50:27 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/error_popups.coffee
  */
 
 (function() {
-  var alert_type, notify;
-  alert_type = function(id) {
-    var idtype;
-    idtype = id.split('_')[1];
+  var notify;
+  notify = function(message) {
+    var idtype, text;
+    $(message).hide();
+    text = $(message).text();
+    idtype = $(message).attr("id").split('_')[1];
     switch (idtype) {
       case "error":
       case "alert":
-        return "error";
+        return $.jnotify(text, "error", true);
       case "warning":
-        return "warning";
+        return $.jnotify(text, "warning");
       default:
-        return "";
-    }
-  };
-  notify = function(message) {
-    $(message).hide();
-    if (message) {
-      return $.jnotify($(message).text(), alert_type($(message).attr("id")));
+        return $.jnotify(text);
     }
   };
   $.notifications = function(obj) {

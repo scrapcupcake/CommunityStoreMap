@@ -1,13 +1,19 @@
 .jnotify-container {
 	position: fixed; 
 	top: 0; 
-	left: 0; 
-	width: 100%; 
+	right: 0; 
+	width: 400px; 
 	z-index: 100000;
+	
+	/* set maximum number of notes to show */
+	max-height: 270px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .jnotify-container .jnotify-notification {
 	position: relative; 
+	margin-bottom: 5px;
 }
 
 .jnotify-container .jnotify-notification .jnotify-background {
@@ -21,6 +27,11 @@
 	-moz-opacity: 0.90; 
 	opacity: 0.90; 
 	z-index: 1; 
+
+	/* round the corners */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .jnotify-container .jnotify-notification a.jnotify-close,
@@ -44,7 +55,7 @@
 	position: relative; 
 	z-index: 2; 
 	padding: 20px;
-	text-align: center;
+	text-align: left;
 	color: #567b1b;
 	font: bold 1.4em Arial,Helvetica,sans-serif;
 	line-height: 1.2em; 
