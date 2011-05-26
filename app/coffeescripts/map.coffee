@@ -6,7 +6,6 @@ $(document).ready ->
         mapTypeId: google.maps.MapTypeId.ROADMAP
         zoom: 7
   mapdata = $('#map').data('jMapping')
-  window.mapdata = mapdata
   mc = new MarkerClusterer(mapdata.map, mapdata.gmarkersArray())
   $("#search").bind "ajax:success", (event, data, status, xhr) -> 
       d = $.parseJSON data

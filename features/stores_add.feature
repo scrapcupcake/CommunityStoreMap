@@ -8,7 +8,6 @@ Feature: Add Stores
   And I add store Knightfall Games
   Then I should see "Store was successfully created, an administrator will need to approve it."
   And I should have the store "Knightfall Games" waiting to be approved
-  When I follow "Back"
   Then I should not see "Knightfall Games"
 
   Scenario: Add Existing Store
@@ -35,7 +34,6 @@ Feature: Add Stores
   Then I should see "Store was successfully created."
   And I should not see "an administrator will need to approve it"
   And I should have the store "Knightfall Games" approved
-  When I follow "Back"
   Then I should see "Knightfall Games"
   
   Scenario: Add Existing Store As Admin

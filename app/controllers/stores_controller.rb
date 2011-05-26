@@ -72,7 +72,7 @@ class StoresController < ApplicationController
         unless @store.approved
           msg = ', an administrator will need to approve it'
         end
-        format.html { redirect_to(@store, :notice => "Store was successfully created#{msg}.") }
+        format.html { redirect_to(root_url, :notice => "Store was successfully created#{msg}.") }
         format.xml  { render :xml => @store, :status => :created, :location => @store }
       else
         format.html { render :action => "new" }

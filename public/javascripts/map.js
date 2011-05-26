@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Thu, 26 May 2011 04:11:46 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 26 May 2011 04:48:37 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/map.coffee
  */
 
@@ -15,7 +15,6 @@
       }
     });
     mapdata = $('#map').data('jMapping');
-    window.mapdata = mapdata;
     mc = new MarkerClusterer(mapdata.map, mapdata.gmarkersArray());
     return $("#search").bind("ajax:success", function(event, data, status, xhr) {
       var d;
