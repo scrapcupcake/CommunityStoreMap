@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'simple_form'
 gem 'json'
 gem 'barista'
+gem 'sanitize'
 gem 'therubyracer-heroku', '0.8.1.pre3', :require => nil, :group => :production
 
 gem 'jquery-rails', '>= 0.2.6'
