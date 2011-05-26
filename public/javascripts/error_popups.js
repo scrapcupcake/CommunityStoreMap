@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 25 May 2011 04:50:27 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 26 May 2011 01:56:33 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/error_popups.coffee
  */
 

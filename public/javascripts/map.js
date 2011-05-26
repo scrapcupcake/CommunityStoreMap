@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Tue, 24 May 2011 05:02:33 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 26 May 2011 01:56:33 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/map.coffee
  */
 
