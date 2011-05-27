@@ -1,3 +1,16 @@
 <h3><%= link_to store.name, store.url %></h3>
 <p><%= store.address%></p>
+<p>Phone: <%= store.phone_number%></p>
+<p>Email: <a href="mailto:<%=store.email%>"><%=store.email%></a></p>
+<% if summary %>
+<p><%= link_to "View Full Details", store_path(store) %></p>
+<% else %>
+<p><%= simple_format store.hours %></p>
 <p><%= simple_format store.description %></p>
+<% end %>
+
+<ul class="game_systems">
+<% store.game_systems.each do |game| %>
+  <li>carries <%= game.name %></li>
+<% end %>
+</ul>

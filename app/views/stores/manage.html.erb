@@ -1,7 +1,7 @@
 <div class="stores_edit">
 <% @stores.each do |store| %>
 <div id="store-<%=store.id%>" class="store">
-  <%= render store %>
+  <%= render store, :summary => true %>
   <%= link_to "Edit", edit_store_path(store) %>
   <%= link_to "Delete", store_path(store), :method => :delete %>
 </div>

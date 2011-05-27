@@ -1,20 +1,17 @@
 class Store < ActiveRecord::Base
   acts_as_mappable
+  has_and_belongs_to_many :game_systems
   before_validation :address_to_latlng
   after_validation :give_latlng_errors_to_address, :if => lambda{ |obj| obj.address_changed? }
   
-  validates_presence_of :name, :description, :address
+  validates_presence_of :name, :description, :address, :phone_number
   validates_numericality_of :lat, :greater_than_or_equal_to => -90, :less_than_or_equal_to => 90
   validates_numericality_of :lng, :greater_than_or_equal_to => -180, :less_than_or_equal_to => 180
   validates_uniqueness_of :lat, :scope => :lng, :message => "must be a unique location"
-  validates_uniqueness_of :address
+  validates_uniqueness_of :address #should I add email and phone_number?
   
-  scope :approved, where(:approved => true)  
-  scope :unapproved, where(:approved => false)  
-  
-  def no_latlng
-    not ((lat) and (lng))
-  end  
+  scope :approved, where(:approved => true)
+  scope :unapproved, where(:approved => false)
   
   def address_to_latlng
       loc = Geokit::Geocoders::GoogleGeocoder.geocode(address)
@@ -35,31 +32,12 @@ class Store < ActiveRecord::Base
     end
   end
   
-  #deprecated, turns out this is handled by jMappable just fine
-  def self.optimal_origin
-    bounds = optimal_bounds
-    lat = bounds[:ne][0] + ((bounds[:sw][0] - bounds[:ne][0]) /2)
-    lng = bounds[:ne][1] + ((bounds[:sw][1] - bounds[:ne][1]) /2)
-    [lat,lng]
-  end
-  
-  #deprecated, turns out this is handled by jMappable just fine
-  def self.optimal_bounds
-    n = Store.maximum('lat')
-    s = Store.minimum('lat')
-    e = Store.maximum('lng')
-    w = Store.minimum('lng')
-    
-    bounds = {:ne => [n,e], :sw => [s,w]}
-    bounds
-  end
-  
   def self.stores_near(location, distance)
     loc = Geokit::Geocoders::GoogleGeocoder.geocode(location)
     if loc.success
       return Store.approved.within(distance, :origin => [loc.lat, loc.lng])
     else
-      return nil
+      return nil #Should raise an exception here instead, really, because the above will return nil, too
     end
   end
 end

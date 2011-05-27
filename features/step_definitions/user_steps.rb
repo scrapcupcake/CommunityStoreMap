@@ -86,7 +86,7 @@ Given /^I have a normal user "([^"]*)"$/ do |email|
 end
 
 Given /^I have an administrator "([^"]*)"$/ do |email|
-  Factory(:user, :email => email, :roles => [Role.find_by_name("Admin")])
+  Factory(:user, :email => email, :roles => [Role.find_or_create_by_name("Admin")])
 end
 
 When /^I force delete user "([^"]*)"$/ do |email|

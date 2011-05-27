@@ -1,6 +1,6 @@
 <div class="pending-stores">
 <% @pending.each do |store| %>
-  <div class ="store"><%= render store %>
+  <div class ="store"><%= render store, :summary => false %>
       <%= link_to "Approve", approve_store_path(store) %> |
       <%= link_to "Delete", store_path(store), :method => :delete, :confirm => "Are you sure?" %> 
   </div>

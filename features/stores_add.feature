@@ -17,7 +17,7 @@ Feature: Add Stores
   Then I should see "Address must be a unique location"
   And I should not have the store "Knightfall Games"
   When I follow "Back"
-  Then I should see "Knightfall Games"
+  Then I should see the store summary for "Knightfall Games"
   
   Scenario: Add Invalid Address Store
   When I go to the new store page
@@ -34,7 +34,7 @@ Feature: Add Stores
   Then I should see "Store was successfully created."
   And I should not see "an administrator will need to approve it"
   And I should have the store "Knightfall Games" approved
-  Then I should see "Knightfall Games"
+  Then I should see the store summary for "Knightfall Games"
   
   Scenario: Add Existing Store As Admin
   Given I am an administrator
@@ -44,7 +44,7 @@ Feature: Add Stores
   Then I should see "Address must be a unique location"
   And I should not have the store "Knightfall Games"
   When I follow "Back"
-  Then I should see "Knightfall Games"
+  Then I should see the store summary for "Knightfall Games"
   
   Scenario: Add Invalid Address Store
   Given I am an administrator

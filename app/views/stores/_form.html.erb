@@ -14,7 +14,11 @@
     <%= f.input :name %>
     <%= f.input :address %>
     <%= f.input :url %>
+    <%= f.input :phone_number %>
+    <%= f.input :email %>
+    <%= f.input :hours, :as => :text %>
     <%= f.input :description, :as => :text %>
+    <%= f.association :game_systems, :as => :check_boxes %>
   </div>
 
   <div class="actions">

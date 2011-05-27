@@ -1,4 +1,5 @@
-known_stores ||= {  
+def getstore(store)
+  @known_stores ||= {  
 :knightfall_games => { 
         :lat => 45.48692, 
         :lng => -122.779996, 
@@ -25,12 +26,14 @@ known_stores ||= {
           :name => "Invalid Games",
           :url => "http://www.example.com"
         }
-}
+  }
+  storesym = store.sub(" ", "").tableize.to_sym
+  Factory.attributes_for(:store, @known_stores[storesym])
+end
 
 Given /^I have stores? (.+)$/ do |stores|
   stores.split(", ").each do |store|
-    storesym = store.sub(" ", "").tableize.to_sym
-    store_details = known_stores[storesym]
+    store_details = getstore(store)
     store_details[:approved] = true
     Factory(:store, store_details)
   end
@@ -38,22 +41,58 @@ end
 
 Given /^I have unapproved stores? (.+)$/ do |stores|
   stores.split(", ").each do |store|
-    storesym = store.sub(" ", "").tableize.to_sym
-    store_details = known_stores[storesym]
+    store_details = getstore(store)
     store_details[:approved] = false
     Factory(:store, store_details)
   end
 end
 
 When /^I add store (.+)$/ do |store|
-    storesym = store.sub(" ", "").tableize.to_sym
-    store_details = known_stores[storesym]
-    store_details[:description] ||= "Test"
+    store_details = getstore(store)
     When %{I fill in "store_name" with "#{store_details[:name]}"}
     When %{I fill in "store_address" with "#{store_details[:address]}"}
     When %{I fill in "store_url" with "#{store_details[:url]}"}
     When %{I fill in "store_description" with "#{store_details[:description]}"}
+    When %{I fill in "store_phone_number" with "#{store_details[:phone_number]}"}
+    When %{I fill in "store_email" with "#{store_details[:email]}"}
+    When %{I fill in "store_hours" with "#{store_details[:hours]}"}
+    store_details[:game_systems].each do |game|
+      When %{I check "#{game.name}"}
+    end
     When %{I press "Create Store"}
+end
+
+Then /^I should see the store summary for "([^"]*)"$/ do |store|
+    store_db = Store.find_by_name(store)
+    store_db.should be
+    store_db.approved.should be_true
+    id = store_db.id
+    
+    Then %{I should see "#{store_db.name}" within the store_id "#{id}"}
+    Then %{I should see "#{store_db.phone_number}" within the store_id "#{id}"}
+    Then %{I should see "#{store_db.email}" within the store_id "#{id}"}
+    Then %{I should see "View Full Details" within the store_id "#{id}"}
+    store_db.game_systems.each do |game|
+      Then %{I should see "carries #{game.name}" within the store_id "#{id}"}
+    end
+    Then %{I should not see "#{store_db.description.gsub("\n"," ")}" within the store_id "#{id}"}
+    Then %{I should not see "#{store_db.hours.gsub("\n"," ")}" within the store_id "#{id}"}
+end
+
+Then /^I should see store summary (.+)$/ do |store|
+    store_db = Store.find_by_name(store)
+    store_db.should be
+    store_db.approved.should be_true
+    id = store_db.id
+    
+    Then %{I should see "#{store_db.name}" within the store_id "#{id}"}
+    Then %{I should see "#{store_db.phone_number}" within the store_id "#{id}"}
+    Then %{I should see "#{store_db.email}" within the store_id "#{id}"}
+    store_db.game_systems.each do |game|
+      Then %{I should see "carries #{game.name}" within the store_id "#{id}"}
+    end
+    Then %{I should see "#{store_db.description.gsub("\n"," ")}" within the store_id "#{id}"}
+    Then %{I should see "#{store_db.hours.gsub("\n"," ")}" within the store_id "#{id}"}
 end
 
 Then /^I should have the store "([^"]*)" approved$/ do |store|

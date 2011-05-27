@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110507041158) do
+ActiveRecord::Schema.define(:version => 20110527031519) do
+
+  create_table "game_systems", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_systems_stores", :id => false, :force => true do |t|
+    t.integer "store_id"
+    t.integer "game_system_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -27,12 +40,15 @@ ActiveRecord::Schema.define(:version => 20110507041158) do
     t.string   "name"
     t.string   "url"
     t.text     "description"
-    t.decimal  "lat",         :precision => 12, :scale => 7
-    t.decimal  "lng",         :precision => 12, :scale => 7
+    t.decimal  "lat",          :precision => 12, :scale => 7
+    t.decimal  "lng",          :precision => 12, :scale => 7
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
-    t.boolean  "approved",                                   :default => false
+    t.boolean  "approved",                                    :default => false
+    t.string   "hours"
+    t.string   "phone_number"
+    t.string   "email"
   end
 
   create_table "users", :force => true do |t|

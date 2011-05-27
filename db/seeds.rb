@@ -6,10 +6,30 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-admin = User.find_or_create_by_email({
-        :email => "admin@localhost.localhost",
-        :password => "changeme",
-        :password_confirmation => "changeme"
-        })
-Role.create_role(:admin)
-admin.grant_role(:admin)
+if User.count == 0
+  admin = User.find_or_create_by_email({
+          :email => "admin@localhost.localhost",
+          :password => "changeme",
+          :password_confirmation => "changeme"
+          })
+  Role.create_role(:admin)
+  admin.grant_role(:admin)
+end
+
+games = %{Warmachine/Hordes
+Malifaux
+MERCS
+Dystopian Wars
+Firestorm Armada
+Uncharted Seas
+Infinity
+Anima Tactics
+AE-WWII}
+
+games.split("\n").each do |game|
+  GameSystem.find_or_create_by_name({
+  :name => game,
+  :url => "",
+  :description => "Totally Awesome!"
+  })
+end

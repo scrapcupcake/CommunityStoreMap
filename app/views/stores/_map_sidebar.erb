@@ -1,8 +1,8 @@
 <% @stores.each do |store| %>
-  <div class="map-location" data-jmapping="{id: <%= store.id %>, point: {lat: <%= store.lat %>, lng: <%= store.lng %>}}">
+  <div id="store-<%=store.id%>" class="map-location" data-jmapping="{id: <%=store.id%>, point: {lat: <%= store.lat %>, lng: <%= store.lng %>}}">
     <a href="#" class="map-link"><%= store.name %></a>
     <div class="info-box">
-      <%= render store %>
+      <%= render store, :summary => true %>
     </div>
   </div>
 <% end %>

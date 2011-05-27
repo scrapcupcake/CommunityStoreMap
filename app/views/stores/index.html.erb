@@ -1,6 +1,6 @@
 <h1>Listing stores</h1>
 
-<%= render :partial => "map", :locals => { :stores => @stores } %>
+<%= render :partial => "map", :stores => @stores %>
 
 <%= form_tag store_search_path, :id => "search", :remote => true, :method => 'get' do %>
 <%= text_field_tag :storesearch %>
