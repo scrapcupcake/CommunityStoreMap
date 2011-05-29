@@ -40,7 +40,8 @@ class Store < ActiveRecord::Base
       stores = stores.near(search.near)
     end
     if search.game_systems
-      stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems}).group('stores.id')
+      stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems})
+      stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url')
     end
     stores
   end
