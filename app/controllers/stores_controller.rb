@@ -1,37 +1,23 @@
 class StoresController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
   load_resource :only => [:show, :new, :create]
   load_and_authorize_resource :except => [:show, :new, :create, :index]
   
   # GET /stores
   # GET /stores.xml
-  # These top three methods require custom resource loading or authorization
+  # This method requires custom resource loading
   def index
-    distance = 50
-    if params.has_key? :distance
-      distance = params[:distance]
+    begin
+      @search = StoreSearch.new(params[:store_search] || {})
+      @stores = Store.search(@search)
+    rescue Store::GeolocException => e
+      flash.now[:warning] = e.message
+      params[:store_search].delete :near
+      @search = StoreSearch.new(params[:store_search])
+      @stores = Store.search(@search)
     end
-    stores = nil
-    if params[:storesearch] 
-      if params[:storesearch].length <= 0
-        flash[:warning] = "Unable to find location, please check your spelling and try again"
-      end
-      stores = Store.stores_near(params[:storesearch], distance)
-      if not stores or stores.count == 0 
-        flash[:warning] = "Unable to find location, please check your spelling and try again"
-        stores = nil
-      end
-    end
-    @stores = stores || Store.approved
-    
-    if request.xhr?
-          html = render_to_string(:content_type=>'text/html', :layout => false, :partial => 'map_sidebar')
-          errors = render_to_string(:content_type=>'text/html', :layout => false, :partial => 'layouts/errors')
-          json = { :html => html, :errors => errors}.to_json
-          render :text =>  json
-    else
-      respond_with(@stores)      
-    end
+
+    respond_with(@stores)
   end
   
   def pending

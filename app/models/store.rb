@@ -1,4 +1,6 @@
-class Store < ActiveRecord::Base
+class Store < ActiveRecord::Base  
+  class GeolocException < Exception
+  end
   acts_as_mappable
   has_and_belongs_to_many :game_systems
   before_validation :address_to_latlng
@@ -30,14 +32,37 @@ class Store < ActiveRecord::Base
       end
       errors[field].clear
     end
+  end  
+  
+  def self.search(search)
+    stores = self.approved
+    if search.near and not search.near.empty?
+      stores = stores.near(search.near)
+    end
+    if search.game_systems
+      stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems}).group('stores.id')
+    end
+    stores
   end
   
-  def self.stores_near(location, distance)
-    loc = Geokit::Geocoders::GoogleGeocoder.geocode(location)
-    if loc.success
-      return Store.approved.within(distance, :origin => [loc.lat, loc.lng])
+  def self.near(location, distance = 0)
+    distance = 50 unless distance > 0
+    stores = Store.approved.within(distance, :origin => find_origin(location) )
+    if stores.count == 0
+      raise GeolocException, "Unable to find any stores near that location, please check your spelling and try again"
     else
-      return nil #Should raise an exception here instead, really, because the above will return nil, too
+      stores
     end
   end
+  
+  private
+  def self.find_origin(location)
+    loc = Geokit::Geocoders::GoogleGeocoder.geocode(location)
+    if loc.success
+      [loc.lat, loc.lng]
+    else
+      raise GeolocException, "Unable to find location, please check your spelling and try again"
+    end
+  end
+  
 end
