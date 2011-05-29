@@ -41,7 +41,7 @@ class Store < ActiveRecord::Base
     end
     if search.game_systems
       stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems})
-      stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url')
+      stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url, stores.created_at, stores.updated_at')
     end
     stores
   end
