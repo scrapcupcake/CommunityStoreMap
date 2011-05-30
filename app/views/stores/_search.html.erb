@@ -1,6 +1,7 @@
 <div id="search">
 <%= simple_form_for @search, :url => store_search_path, :remote => true, :method => :get do |f| %>
-<%= f.input :near,  :size => 30 %>
+<%= f.input :near, :label => "Search for stores near <br\>" %>
+<label>and carrying the following game systems</label>
 <ul>
 <%= f.collection_check_boxes :game_systems, 
 @search.available_game_systems, :id, :name, 
@@ -10,10 +11,13 @@
 </ul>
 
 
-<%= f.button :submit, "Search For Stores Near" %>
+<%= f.button :submit, "Search For Stores" %>
 <%end%>
 
 <br />
 
+<div class="recommend_button">
 <%= link_to 'Recomend a new store', new_store_path %>
+</div>
+
 </div>

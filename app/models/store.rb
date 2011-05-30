@@ -50,6 +50,7 @@ class Store < ActiveRecord::Base
     if search.game_systems
       stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems})
       stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url, stores.created_at, stores.updated_at, stores.online_store_url, stores.country, stores.state')
+      #the above feels like a hack, but is necessary for the time being
     end
     stores
   end

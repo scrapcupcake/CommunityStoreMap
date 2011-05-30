@@ -27,8 +27,32 @@ margin-top: 30px;
   float: right;
   background-color: #FFF;
   padding: 0px;
+  padding-left: 1em;
+  z-index: 5;
+}
+
+#search label{
+  font-weight:bold;
+}
+
+#search ul li {
+  list-style: none;
 }
 
 #map-side-bar {
   display: none;
+}
+
+.recommend_button{
+ font-size: 1.2em;
+ margin-bottom: 1em;
+ margin-left: 1em;
+}
+
+.recommend_button a{
+ border-style: solid;
+ border-width : 1px 4px 4px 1px;
+ text-decoration : none;
+ padding : 8px;
+ border-color : #4B7399;
 }
