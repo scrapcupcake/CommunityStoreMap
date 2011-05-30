@@ -1,4 +1,21 @@
+resize_map = ->
+  $('#search').width('auto')
+  if $('#search').width() < $(window).width() - 500
+    $('#container').css('margin-top', 50 )
+    $('#map').height( $(window).height() - 60 )
+    $('#map').width( $(window).width() - $('#search').width() - 10 )
+    $('#map').css('top', 50 )  
+  else
+    $('#map').height( $(window).height() - 100 )
+    $('#map').width( $(window).width() - 25 )
+    $('#search').width( $(window).width() - 25 )
+    $('#map').css('top', $("#search").height() + $("#user_nav").height() + 80 )
+    $('#container').css('margin-top', $("#user_nav").height() + 50 )
+
+
 $(document).ready ->
+  resize_map()
+  $(window).resize(resize_map)
   $('#map').jMapping
       map_config:
         navigationControlOptions:
