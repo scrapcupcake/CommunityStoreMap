@@ -60,6 +60,11 @@ When /^I add store (.+)$/ do |store|
       When %{I check "#{game.name}"}
     end
     When %{I press "Create Store"}
+    
+    store = Store.find_by_name(store_details[:name])
+    if store
+      store.country.should == "US"
+    end
 end
 
 Then /^I should see the store summary for "([^"]*)"$/ do |store|

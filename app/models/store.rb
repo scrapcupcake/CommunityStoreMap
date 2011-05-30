@@ -3,7 +3,7 @@ class Store < ActiveRecord::Base
   end
   acts_as_mappable
   has_and_belongs_to_many :game_systems
-  before_validation :address_to_latlng
+  before_validation :address_extra_fields_store
   after_validation :give_latlng_errors_to_address, :if => lambda{ |obj| obj.address_changed? }
   
   validates_presence_of :name, :description, :address, :phone_number
@@ -12,14 +12,22 @@ class Store < ActiveRecord::Base
   validates_uniqueness_of :lat, :scope => :lng, :message => "must be a unique location"
   validates_uniqueness_of :address #should I add email and phone_number?
   
+  attr_accessible :name, :address, :email, :phone_number, :description, :hours, :url, :online_store_url, :game_system_ids
+  
   scope :approved, where(:approved => true)
   scope :unapproved, where(:approved => false)
   
-  def address_to_latlng
+  def address_extra_fields_store
       loc = Geokit::Geocoders::GoogleGeocoder.geocode(address)
       if loc and loc.success
         self.lat = loc.lat.to_f
         self.lng = loc.lng.to_f
+        if not loc.state.empty?
+          self.state = loc.state
+        elsif not loc.province.empty?
+          self.sate = loc.province
+        end
+        self.country = loc.country_code
       else
         errors.add(:address, "Unable to find address, please verify that it is correct and can be found on google maps")
       end
@@ -41,7 +49,7 @@ class Store < ActiveRecord::Base
     end
     if search.game_systems
       stores = stores.joins(:game_systems).where(:game_systems => {:id => search.game_systems})
-      stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url, stores.created_at, stores.updated_at')
+      stores = stores.group('stores.id, stores.name, stores.address, stores.lat, stores.lng, stores.email, stores.phone_number, stores.description, stores.hours, stores.approved, stores.url, stores.created_at, stores.updated_at, stores.online_store_url, stores.country, stores.state')
     end
     stores
   end
