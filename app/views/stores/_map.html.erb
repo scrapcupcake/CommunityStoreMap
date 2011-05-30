@@ -4,13 +4,13 @@
 <%= javascript_include_tag "jquery.metadata.2.1/jquery.metadata.js" %>
 <%= javascript_include_tag "jquery.jmapping-2.1.0/jquery.jmapping.js" %>
 <%= javascript_include_tag "map" %>
-<style type="text/css">
-  #map { height: 400px; width: 1000px; }
-</style>
+<%= stylesheet_link_tag "map" %>
 <%end%>
 
-<div id="map"></div>
-
-<div id="map-side-bar">
-<%= render :partial => "map_sidebar" %>
-</div>
+  <div id="map"></div>
+  
+  <%= render :partial => "search" %>
+  
+  <div id="map-side-bar">
+    <%= render :partial => "map_sidebar" %>
+  </div>

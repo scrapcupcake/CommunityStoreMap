@@ -3,22 +3,26 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Hand Cannon Community" %></title>
     <%= stylesheet_link_tag "application", "jquery.jnotify", "handcannon-style" %>
-    <%= javascript_include_tag :defaults, "jquery.jnotify", "error_popups" %>
+    <%= javascript_include_tag :defaults, "jquery.jnotify", "error_popups", "selectivizr" %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
     <div id="container">
-      <div id="flash">
-        <%= render "layouts/errors"%>
+      <div id="content-header">
+        <div id="flash">
+          <%= render "layouts/errors"%>
+        </div>
+        
+        <%= render "layouts/dashboard" %>
       </div>
-
-      <%= render "layouts/dashboard" %>
       
       
       
-      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%#= content_tag :h1, yield(:title) if show_title? %>
+    
       <%= yield %>
+      
     </div>
   </body>
 </html>

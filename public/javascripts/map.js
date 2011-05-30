@@ -1,10 +1,28 @@
-/* DO NOT MODIFY. This file was compiled Sun, 29 May 2011 21:42:06 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 30 May 2011 04:19:12 GMT from
  * /home/archangelq/Projects/HandCannonCommunity/app/coffeescripts/map.coffee
  */
 
 (function() {
+  var resize_map;
+  resize_map = function() {
+    $('#search').width('auto');
+    if ($('#search').width() < $(window).width() - 500) {
+      $('#container').css('margin-top', 50);
+      $('#map').height($(window).height() - 60);
+      $('#map').width($(window).width() - $('#search').width() - 10);
+      return $('#map').css('top', 50);
+    } else {
+      $('#map').height($(window).height() - 100);
+      $('#map').width($(window).width() - 25);
+      $('#search').width($(window).width() - 25);
+      $('#map').css('top', $("#search").height() + $("#user_nav").height() + 80);
+      return $('#container').css('margin-top', $("#user_nav").height() + 50);
+    }
+  };
   $(document).ready(function() {
     var mapdata, mc;
+    resize_map();
+    $(window).resize(resize_map);
     $('#map').jMapping({
       map_config: {
         navigationControlOptions: {

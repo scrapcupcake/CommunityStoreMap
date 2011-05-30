@@ -1,0 +1,58 @@
+#container {
+  width: 100% !important;
+  padding: 0 !important;
+  border-width: 0 !important;
+}
+
+#map-container
+{
+position: absolute;
+width: 100%;
+padding: 0px;
+margin: 0px;
+border: 0px;
+margin-top: 30px;
+}
+
+#map {
+  position: absolute;
+  height: 700px;
+  width: 70%;
+  left: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#search {
+  float: right;
+  background-color: #FFF;
+  padding: 0px;
+  padding-left: 1em;
+  z-index: 5;
+}
+
+#search label{
+  font-weight:bold;
+}
+
+#search ul li {
+  list-style: none;
+}
+
+#map-side-bar {
+  display: none;
+}
+
+.recommend_button{
+ font-size: 1.2em;
+ margin-bottom: 1em;
+ margin-left: 1em;
+}
+
+.recommend_button a{
+ border-style: solid;
+ border-width : 1px 4px 4px 1px;
+ text-decoration : none;
+ padding : 8px;
+ border-color : #4B7399;
+}
