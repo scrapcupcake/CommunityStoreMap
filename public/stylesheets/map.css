@@ -31,10 +31,6 @@ margin-top: 30px;
   z-index: 5;
 }
 
-#search label{
-  font-weight:bold;
-}
-
 #search ul li {
   list-style: none;
 }

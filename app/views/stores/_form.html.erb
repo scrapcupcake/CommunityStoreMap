@@ -1,3 +1,5 @@
+<% lable_text = lambda {|value, required| "#{required} #{value} #{content_tag :br}"}%>
+
 <%= simple_form_for(@store) do |f| %>
   <% if @store.errors.any? %>
     <div id="error_explanation">
@@ -11,7 +13,7 @@
     </div>
   <% end %>
   <div class="input">
-    <%= f.input :name %>
+    <%= f.input :name, :label_text => lable_text %>
     <%= f.input :address %>
     <%= f.input :url %>
     <%= f.input :online_store_url %>

@@ -86,3 +86,15 @@ a {
 {
   padding: 1em;
 }
+
+/* Forms */
+
+:checked + span
+{
+  font-weight: bold;
+}
+
+:checked + label span
+{
+  font-weight: bold;
+}
