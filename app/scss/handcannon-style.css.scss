@@ -1,0 +1,136 @@
+/*  
+Theme Name: Duffy
+Description: Duffy Theme Designed Version: 1.0
+Author: InfoCreek.com
+
+	
+         
+	The CSS, XHTML and design is released under the Creative Common Attribution 3.0 License (http://creativecommons.org/licenses/by/3.0/), which means you can use and modify it for any purpose.  
+ 
+By downloading our themes, you agree that you: 
+
+       1)  Can not resell the theme
+       2)  You may use and modify the theme but the footer link back to InfoCreek.com should be retained.
+       3)  You may use the theme on personal or commercial projects as far as #2 above is met 
+
+
+*/
+
+@import "common.css.scss"
+
+@import "handcannon-basic.css.scss"
+
+@import "handcannon-header.css.scss"
+
+@import "handcannon-body.css.scss"
+
+@import "handcannon-comments.css.scss"
+
+@import "handcannon-sidebar.css.scss"
+
+#footer {
+  position: relative;
+  width: 990px;
+  margin: 0 auto;
+  text-align: left;
+  min-height: 48px; }
+
+.copy {
+  position: relative;
+  padding: 22px 0px 5px 30px;
+  font-size: 11px;
+  width: 590px;
+  text-align: left;
+  color: #b2a981; }
+
+.valid {
+  position: absolute;
+  right: 230px;
+  top: 5px;
+  font-size: 11px;
+  color: #b2a981; }
+
+.ping-track {
+  position: relative;
+  border: 1px solid #5a4a38;
+  padding: 10px; }
+
+.up {
+  text-transform: uppercase; }
+
+.b {
+  font-weight: bold; }
+
+.center {
+  text-align: center; }
+
+img.center, .c {
+  margin: 0 auto; }
+
+.l, .left {
+  float: left; }
+
+.r, .right {
+  float: right; }
+
+.textleft {
+  text-align: left !important; }
+
+.clear {
+  clear: both; }
+
+/* -- SideBar Titles -- */
+
+.sb_tit {
+  position: relative;
+  background: #1a0603;
+  width: 179px; }
+
+.sb_tit_wrap1 {
+  position: relative;
+  background: url(images/sbtit3_bot.gif) center bottom no-repeat; }
+
+.sb_tit_wrap2 {
+  position: relative;
+  background: url(images/sbtit3_top.gif) center top no-repeat;
+  padding: 12px 0px 12px 0px; }
+
+.widget_categories .sb_tit, #calendar .sb_tit {
+  position: relative;
+  background: url(images/sbtit1_bg.gif) center top repeat-y; }
+
+.widget_categories .sb_tit_wrap1, #calendar .sb_tit_wrap1 {
+  position: relative;
+  background: url(images/sbtit1_bot.gif) center bottom no-repeat; }
+
+.widget_categories .sb_tit_wrap2, #calendar .sb_tit_wrap2 {
+  position: relative;
+  background: url(images/sbtit1_top.gif) center top no-repeat;
+  padding: 12px 0px 12px 0px; }
+
+.widget_categories h2, #calendar h2 {
+  color: #1a0603 !important; }
+
+.widget_archives {
+  .sb_tit {
+    position: relative;
+    background: #1a0603; }
+  .sb_tit_wrap1 {
+    position: relative;
+    background: url(images/sbtit2_bot.gif) center bottom no-repeat; }
+  .sb_tit_wrap2 {
+    position: relative;
+    background: url(images/sbtit2_top.gif) center top no-repeat;
+    padding: 13px 0px 13px 0px; } }
+
+.widget_recent_entries {
+  .sb_tit {
+    position: relative;
+    background: #1a0603; }
+  .sb_tit_wrap1 {
+    position: relative;
+    background: url(images/sbtit4_bot.gif) center bottom no-repeat; }
+  .sb_tit_wrap2 {
+    position: relative;
+    background: url(images/sbtit4_top.gif) center top no-repeat;
+    padding: 15px 0px 16px 0px; } }
