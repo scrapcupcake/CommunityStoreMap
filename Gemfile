@@ -7,7 +7,7 @@ gem 'geokit'
 gem 'geokit-rails3'
 gem 'devise'
 gem 'cancan'
-gem 'simple_form', :git => "https://github.com/archangelq/simple_form.git"
+gem 'simple_form'
 gem 'json'
 gem 'barista'
 gem 'therubyracer-heroku', '0.8.1.pre3', :require => nil, :group => :production

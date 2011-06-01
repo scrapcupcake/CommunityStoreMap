@@ -13,15 +13,37 @@
     </div>
   <% end %>
   <div class="input">
-    <%= f.input :name, :label_text => lable_text %>
-    <%= f.input :address %>
-    <%= f.input :url %>
-    <%= f.input :online_store_url %>
-    <%= f.input :phone_number %>
-    <%= f.input :email %>
-    <%= f.input :hours, :as => :text %>
-    <%= f.input :description, :as => :text %>
-    <%= f.association :game_systems, :as => :check_boxes %>
+    <div class="fieldgroup">
+      <fieldset class="flow">
+        <legend>Location Information</legend>
+      <%= f.input :name, :label_text => lable_text %>
+      <%= f.input :address %>
+      <%= f.input :url %>
+      <%= f.input :online_store_url %>
+    </fieldset>
+      
+      <fieldset class="flow">
+        <legend>Contact Information</legend>
+      <%= f.input :phone_number %>
+      <%= f.input :email %>
+    </fieldset>
+    </div>
+    
+    <div class="fieldgroup">
+      <fieldset class="divider even">
+        <%= f.association :game_systems, :as => :check_boxes %>        
+      </fieldset>
+    </div>
+    
+    <div class="fieldgroup">
+      <fieldset class="flow">
+        <%= f.input :hours, :as => :text %>
+      </fieldset>
+      
+      <fieldset class="flow">
+        <%= f.input :description, :as => :text %>
+      </fieldset>
+    </div>
   </div>
 
   <div class="actions">

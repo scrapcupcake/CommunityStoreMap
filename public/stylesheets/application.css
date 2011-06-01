@@ -89,12 +89,103 @@ a {
 
 /* Forms */
 
-:checked + span
+div.input label:first-child
 {
-  font-weight: bold;
+  display: block;
+}
+
+form ul li 
+{
+  list-style: none;
+}
+
+div.actions
+{
+  clear: both;
+}
+
+fieldset
+{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-color: lightblue;
+  margin-bottom: 1em;
+}
+
+fieldset legend
+{
+  border: 1px solid black;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+fieldset.divider{
+  clear: both;
+}
+
+fieldset.even {
+  text-align:center;
+}
+
+fieldset.flow
+{
+  float: left;
+  padding-right: 1em;
+
 }
 
 :checked + label span
 {
   font-weight: bold;
+}
+
+input[type="button"], input[type="submit"], button{
+ border-style: solid;
+ border-width : 1px 4px 4px 1px;
+ text-decoration : none;
+ padding : 8px;
+ border-color : #4B7399;
+ background-color: white;
+ margin-left: auto;
+ margin-right: auto;
+ text-align: center;
+}
+
+/* Specific Forms */
+form#new_store { 
+  width: 67em;
+  margin-bottom: 2em;
+}
+
+form#new_store fieldset {
+  width: 31em;
+}
+
+form#new_store fieldset div.input {
+  width: 29em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form#new_store fieldset.divider{
+  width: 64.6em;
+}
+
+form#new_store fieldset.divider>div.input {
+  width: 100%;
+}
+
+form#new_store fieldset.divider>div.input>span{
+  width: 20em;
+  display: inline-block;
+  text-align: left;
+}
+
+form#new_store .actions
+{
+display: table;
+margin: 0px auto;
 }
