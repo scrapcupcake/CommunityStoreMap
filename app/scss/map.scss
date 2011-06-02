@@ -1,3 +1,5 @@
+@import "common";
+
 #container {
   width: 100% !important;
   padding: 0 !important;
@@ -8,10 +10,11 @@
   width: 100%;
   padding: 0px;
   margin: 0px;
-  border: 0px; }
+  border: 0px;}
 
-#content-body {
-  width: 100% !important; }
+#content-body{
+width: 100% !important;
+}
 
 #map {
   position: absolute;
@@ -19,38 +22,41 @@
   width: 70%;
   left: 0px;
   padding: 0px;
-  margin: 0px; }
-  #map div {
+  margin: 0px; 
+  
+  div {
     padding: 0px;
-    margin: 0px; }
+    margin: 0px; 
+  }
+}  
 
 #search {
   float: right;
-  background: url("http://handcannononline.com/wp-content/themes/Duffy/images/cont-bg.jpg") repeat scroll 0 0 transparent;
-  background-color: #765425;
+  background: url($base-url + "images/cont-bg.jpg") repeat scroll 0 0 transparent;
+  background-color: $body-background;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   padding: 0px;
   padding-left: 1em;
-  z-index: 5; }
-  #search ul li {
+  z-index: 5;
+  ul li {
     text-align: justify;
-    list-style: none; }
+    list-style: none; } }
 
 #map-side-bar {
   display: none; }
 
 .recommend_button {
   margin-bottom: 1em;
-  margin-left: 1em; }
-  .recommend_button a {
+  margin-left: 1em;
+  a {
     border-style: solid;
     border-width: 1px 4px 4px 1px;
     text-decoration: none;
     padding: 8px;
-    color: #e6e7d7;
-    border-color: #1a0603;
+    color: $main-text;
+    border-color: $main-background;
     margin-left: auto;
     margin-right: auto;
-    text-align: center; }
+    text-align: center;} }

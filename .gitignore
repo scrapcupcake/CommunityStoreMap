@@ -1,5 +1,6 @@
 .bundle
 .redcar
+.sass-cache
 db/*.sqlite3
 log/*.log
 tmp/

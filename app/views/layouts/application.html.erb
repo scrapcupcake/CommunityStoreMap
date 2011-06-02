@@ -10,6 +10,9 @@
   <body>
     <div id="container">
       <div id="content-header">
+        <div class="logo">
+          <h1><a href="http://handcannononline.com">Hand Cannon Online</a></h1>
+        </div>
         <div id="flash">
           <%= render "layouts/errors"%>
         </div>
@@ -20,9 +23,9 @@
       
       
       <%#= content_tag :h1, yield(:title) if show_title? %>
-    
-      <%= yield %>
-      
+      <div id="content-body">
+        <%= yield %>
+      </div>    
     </div>
   </body>
 </html>

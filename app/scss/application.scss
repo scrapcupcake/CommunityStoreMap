@@ -1,29 +1,34 @@
+@import "common";
 @import url("user_nav.css");
+
 body {
-  background-color: #1a0603;
+  background-color: $main-background;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px; }
 
 a {
-  color: #765425;
-  color: #0000FF; }
-  a:visited {
-    color: #1a0603; }
-  a img {
+  color: $body-background;
+  
+  &:visited { color: $main-background; }
+  img {
     border: none; }
+  color: #0000FF; }
 
 .clear {
   clear: both;
   height: 0;
   overflow: hidden; }
 
+
+
 #container {
   width: 90%;
   margin: 0 auto;
-  background-color: #1a0603;
-  color: #e6e7d7;
+  background-color: $main-background;
+  color: $main-text;
   padding: 20px 40px;
-  border: solid 1px black; }
+  border: solid 1px black;
+}
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
@@ -47,8 +52,8 @@ a {
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-  font-size: 12px; }
-  .error_messages h2 {
+  font-size: 12px;
+  h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 10px;
@@ -56,25 +61,26 @@ a {
     margin: 0;
     background-color: #c00;
     color: #fff; }
-  .error_messages p {
+  p {
     margin: 8px 10px; }
-  .error_messages ul {
-    margin: 0; }
+  ul {
+    margin: 0; } }
 
 #content-body {
-  background: url("http://handcannononline.com/wp-content/themes/Duffy/images/cont-bg.jpg") repeat scroll 0 0 transparent;
-  background-color: #765425;
+  background: url($base-url + "images/cont-bg.jpg") repeat scroll 0 0 transparent;
+  background-color: $body-background;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: 990px; }
-  #content-body div {
-    padding: 1em; }
+  width: 990px;
+  div {
+    padding: 1em; } }
 
 /* Forms */
+
 div.input label:first-child {
   display: block; }
 
@@ -85,68 +91,72 @@ fieldset {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  background-color: #765425;
-  margin-bottom: 1em; }
-  fieldset legend {
+  background-color: $body-background;
+  margin-bottom: 1em;
+  legend {
     border: 1px solid black;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    background-color: #1a0603; }
-  fieldset.divider {
+    background-color: $main-background; }
+  &.divider {
     clear: both; }
-  fieldset.even {
+  &.even {
     text-align: center; }
-  fieldset.flow {
+  &.flow {
     float: left;
-    padding-right: 1em; }
+    padding-right: 1em; } }
 
 :checked + label span {
   font-weight: bold; }
 
-input[type="button"], input[type="submit"] {
-  font-family: Verdana,Helvetica,Arial;
-  font-size: 14px;
-  border-style: solid;
-  border-width: 1px 4px 4px 1px;
-  text-decoration: none;
-  padding: 8px;
-  color: #e6e7d7;
-  background-color: transparent;
-  border-color: #1a0603;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center; }
+input {
+  &[type="button"], &[type="submit"] {
+    font-family: Verdana,Helvetica,Arial;
+    font-size: 14px;
+    border-style: solid;
+    border-width: 1px 4px 4px 1px;
+    text-decoration: none;
+    padding: 8px;
+    color: $main-text;
+    background-color: transparent;
+    border-color: $main-background;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; } }
 
 button {
   border-style: solid;
   border-width: 1px 4px 4px 1px;
   text-decoration: none;
   padding: 8px;
-  color: #e6e7d7;
-  border-color: #1a0603;
+  color: $main-text;
+  border-color: $main-background;
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
 
 /* Specific Forms */
+
 form#new_store {
   width: 67em;
   margin-bottom: 2em;
   overflow: auto;
-  height: 1%; }
-  form#new_store fieldset {
-    width: 400px; }
-    form#new_store fieldset div.input {
-      width: 380px; }
-    form#new_store fieldset.divider {
+  height: 1%;
+  fieldset {
+    width: 400px;
+    div.input {
+      width: 380px;
+    }
+    &.divider {
       width: 850px; }
-    form#new_store fieldset.divider > div.input {
-      width: 100%; }
-    form#new_store fieldset.divider > div.input > span {
-      width: 32%;
-      display: inline-block;
-      text-align: left; }
-  form#new_store .actions {
+    &.divider>div {
+      &.input {
+        width: 100%; }
+      &.input>span {
+        width: 32%;
+        display: inline-block;
+        text-align: left; } } }
+  .actions {
     display: table;
-    margin: 0px auto; }
+    margin: 0px auto; } }
