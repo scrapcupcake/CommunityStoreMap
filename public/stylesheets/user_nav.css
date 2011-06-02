@@ -1,24 +1,54 @@
+div#content-header {
+  background-image: url("http://handcannononline.com/wp-content/themes/Duffy/images/header_bg.jpg") no-repeat scroll center top transparent;
+  min-width: 990px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 185px; }
+  div#content-header div.logo {
+    background: url("http://handcannononline.com/wp-content/themes/Duffy/images/logo-bg.gif") no-repeat scroll 44% 0 transparent;
+    letter-spacing: 0.02em;
+    margin-top: 28px;
+    padding: 0;
+    height: 95px;
+    left: 35%;
+    position: absolute;
+    top: 0px; }
+    div#content-header div.logo h1 {
+      position: relative;
+      top: 10px;
+      text-align: center; }
+    div#content-header div.logo h1 a {
+      font: small-caps 32px/110% Times New Roman;
+      text-decoration: none;
+      color: #e6e7d7; }
+
 #user_nav {
+  background: url("http://handcannononline.com/wp-content/themes/Duffy/images/cont-bg.jpg") repeat scroll 0 0 transparent;
+  background-color: #765425;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 24px;
   position: absolute;
-  top: 5px;
   right: 10px;
-  border-width : 1px 2px 3px 1px;
-  border-color: #4B7399;
-  border-style: solid;
-  padding: 10px;
-  background-color: #FFF;
+  text-align: right;
+  top: 150px;
   z-index: 6;
-}
-
-#user_nav div, #user_nav ul, #user_nav ul li
-{
-  display: inline;
-}
-
-#user_nav a{
- border-style: solid;
- border-width : 1px 4px 4px 1px;
- text-decoration : none;
- padding : 4px;
- border-color : #4B7399;
-}
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px; }
+  #user_nav div {
+    display: inline;
+    white-space: nowrap; }
+  #user_nav ul {
+    display: inline; }
+    #user_nav ul li {
+      display: inline;
+      border-left: 1px solid #130A03;
+      padding-left: 0.5em; }
+    #user_nav ul li:first-child {
+      border: none; }
+  #user_nav a {
+    color: #e6e7d7;
+    text-decoration: none; }
