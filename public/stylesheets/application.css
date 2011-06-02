@@ -99,11 +99,6 @@ form ul li
   list-style: none;
 }
 
-div.actions
-{
-  clear: both;
-}
-
 fieldset
 {
   -webkit-border-radius: 10px;
@@ -158,6 +153,8 @@ input[type="button"], input[type="submit"], button{
 form#new_store { 
   width: 67em;
   margin-bottom: 2em;
+  overflow: auto;
+  height: 1%;
 }
 
 form#new_store fieldset {
