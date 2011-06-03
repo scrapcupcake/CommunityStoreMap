@@ -54,3 +54,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center; }
+
+div#map {
+  text-align: left;
+  color: Black; }
